@@ -113,12 +113,11 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  // let angle = Math.atan2(y2, x2) - Math.atan2(y1, x1);
-  // return angle * -1
-  let dy = y2 - y1;
-  let dx = x2 - x1;
-  let theta = Math.atan(dy, dx);
-  return theta
+  let xy = (x1 * y1) + (x2 * y2);
+  let modX = Math.sqrt((x1 * x1) + (x2 * x2));
+  let modY = Math.sqrt((y1 * y1) + (y2 * y2));
+  let result = Math.acos(xy / (modX * modY));
+  return result;
 }
 
 /**
