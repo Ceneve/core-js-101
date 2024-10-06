@@ -52,7 +52,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if(value1 + value2 === 0){
+  if (value1 + value2 === 0) {
     return 0;
   }
   return (value1 / 2 + value2 / 2);
@@ -74,7 +74,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
+  return Math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2));
 }
 
 /**
@@ -113,10 +113,10 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  let xy = (x1 * y1) + (x2 * y2);
-  let modX = Math.sqrt((x1 * x1) + (x2 * x2));
-  let modY = Math.sqrt((y1 * y1) + (y2 * y2));
-  let result = Math.acos(xy / (modX * modY));
+  const xy = (x1 * y1) + (x2 * y2);
+  const modX = Math.sqrt((x1 * x1) + (x2 * x2));
+  const modY = Math.sqrt((y1 * y1) + (y2 * y2));
+  const result = Math.acos(xy / (modX * modY));
   return result;
 }
 
@@ -166,7 +166,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2));
+  return Math.sqrt((a ** 2) + (b ** 2) + (c ** 2));
 }
 
 
@@ -188,7 +188,7 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return (Math.round(num / Math.pow(10, pow))) * Math.pow(10, pow);
+  return (Math.round(num / (10 ** pow))) * (10 ** pow);
 }
 
 /**
@@ -209,12 +209,12 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  for(let i = n - 1; i > 1; i--){
-    if(n % i === 0){
-      return false
+  for (let i = n - 1; i > 1; i -= 1) {
+    if (n % i === 0) {
+      return false;
     }
   }
-  return true
+  return true;
 }
 
 /**
@@ -233,15 +233,14 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  let n = Number(value);
-  if(isNaN(n)){
+  const n = Number(value);
+  if (Object.is(n, NaN)) {
     return def;
   }
-  if(typeof n === "number"){
-    return n
-  }else{
-    return def
+  if (typeof n === 'number') {
+    return n;
   }
+  return def;
 }
 
 module.exports = {
